@@ -1,0 +1,955 @@
+{
+	"info": {
+		"_postman_id": "82ca475c-3493-418b-a993-4fe044e66f6e",
+		"name": "backend project",
+		"description": "web shop api\n\nused variables:\n\nvariables:\n\nbase_url",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26605138"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin22@gmx.at\",\n    \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admins",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admins"
+							]
+						},
+						"description": "creating an admin\n\ncode 200:\n\nexample response:\n\n{ \"id\": 24, \"email\": \"[admin@gmx.at](mailto:admin@gmx.at)\"}\n\n500: admin could not be created\n\n403: Admin with this email already exists'"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6ImZpeG5vbW9pQGdteC5hdCIsImlhdCI6MTY4OTE2NzMyMCwiZXhwIjoxNjkxODQ1NzIwfQ.xCH3iCimHi3sUArz1szClKk6pJw0QFxin4KNWqfhmJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin22@gmx.at\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"login"
+							]
+						},
+						"description": "login for an admin\n\n200\n\nresponse: token, userId and email\n\n500: several messages"
+					},
+					"response": []
+				},
+				{
+					"name": "update/products/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6ImZpeG5vbW9pQGdteC5hdCIsImlhdCI6MTY4OTE2NzMyMCwiZXhwIjoxNjkxODQ1NzIwfQ.xCH3iCimHi3sUArz1szClKk6pJw0QFxin4KNWqfhmJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stock\": 10,\n    \"name\":\"Ibanez Gio UPDATE\",\n    \"price\": \"209\",\n    \"description\": \" E-Gitarre, Pappelkorpus, Ahornhals, Jatoba-Griffbrett, Ibanez Infinity R Humbucker, Ibanez Infinity RS Single-Coils, T106 Tremolo \"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/products/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"products",
+								"5"
+							]
+						},
+						"description": "update products\n\n200\n\nresponse : updated product\n\n500: Update Product failed"
+					},
+					"response": []
+				},
+				{
+					"name": "products/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoiZnJldWRAZ214LmF0IiwiaWF0IjoxNjg5MDIwMzc3LCJleHAiOjE2OTE2OTg3Nzd9.08fE7jt6wPJ0MpNlOLadKaz16_FbwsUXWkG-Kj8KSQE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"products",
+								"1"
+							]
+						},
+						"description": "delete products by id\n\n200\n\nresponse: marked as deleted\n\n500: Cannot delete products"
+					},
+					"response": []
+				},
+				{
+					"name": "products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoiZnJldWRAZ214LmF0IiwiaWF0IjoxNjg5MDIwMzc3LCJleHAiOjE2OTE2OTg3Nzd9.08fE7jt6wPJ0MpNlOLadKaz16_FbwsUXWkG-Kj8KSQE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stock\": \"10\",\n    \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n    \"price\": \"159.00\",\n    \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n    \"categorgyId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"products"
+							]
+						},
+						"description": "add products to the database\n\n200\n\nresponse: Product created successfully\n\n400: Bad request"
+					},
+					"response": []
+				},
+				{
+					"name": "orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6ImZpeG5vbW9pQGdteC5hdCIsImlhdCI6MTY4OTE2NzMyMCwiZXhwIjoxNjkxODQ1NzIwfQ.xCH3iCimHi3sUArz1szClKk6pJw0QFxin4KNWqfhmJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"orders"
+							]
+						},
+						"description": "Order overview for admins, newest orders first\n\n200\n\nresponse:if a guest has placed an order, guest data will be included if a registered user has placed an order, the user data will be included\n\n500: error overview could not be loaded"
+					},
+					"response": []
+				},
+				{
+					"name": "status/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6ImZpeG5vbW9pQGdteC5hdCIsImlhdCI6MTY4OTE2NzMyMCwiZXhwIjoxNjkxODQ1NzIwfQ.xCH3iCimHi3sUArz1szClKk6pJw0QFxin4KNWqfhmJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/status/47",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"status",
+								"47"
+							]
+						},
+						"description": "update order status\n\nfalse = 0/ processing , true = 1/shipped\n\n200\n\nresponse: { 1 }\n\n500: order id not found"
+					},
+					"response": []
+				},
+				{
+					"name": "find all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6ImZpeG5vbW9pQGdteC5hdCIsImlhdCI6MTY4OTE2NzMyMCwiZXhwIjoxNjkxODQ1NzIwfQ.xCH3iCimHi3sUArz1szClKk6pJw0QFxin4KNWqfhmJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"users"
+							]
+						},
+						"description": "a list of signed users\n\n200\n\nresponse: signed users\n\n401: unauthorized"
+					},
+					"response": []
+				},
+				{
+					"name": "user/:id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6ImZpeG5vbW9pQGdteC5hdCIsImlhdCI6MTY4OTE2NzMyMCwiZXhwIjoxNjkxODQ1NzIwfQ.xCH3iCimHi3sUArz1szClKk6pJw0QFxin4KNWqfhmJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/user/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"7"
+							]
+						},
+						"description": "Find a user by id\n\n200: user data\n\n404: User Id not found"
+					},
+					"response": []
+				},
+				{
+					"name": "add Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJlbWFpbCI6ImZpeG5vbW9pQGdteC5hdCIsImlhdCI6MTY4OTE2NzMyMCwiZXhwIjoxNjkxODQ1NzIwfQ.xCH3iCimHi3sUArz1szClKk6pJw0QFxin4KNWqfhmJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Akustikgitarren Verstärker\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"categories"
+							]
+						},
+						"description": "das geht nicht"
+					},
+					"response": []
+				}
+			],
+			"description": "all requests from an damin"
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "orders/user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicG9zdG1hbkBnbXguYXQiLCJpYXQiOjE2ODkyMjkyNTEsImV4cCI6MTY5MTkwNzY1MX0.oOyTLVjnmpSxJ3umFW6TmKil1m5Saj3Ik1F1ITtCFLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\"product\": [{\n    \"id\": 16,\n    \"quantity\": 1\n}]\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"user"
+							]
+						},
+						"description": "order by a authenticated user\n\n201\n\nresponse: order successful\n\n400: Out of stock\n\n500\\. order error occured"
+					},
+					"response": []
+				},
+				{
+					"name": "user/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"email\": \"postman@gmx.at\",\n    \"password\": \"password9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						},
+						"description": "login a signed user\n\n200\n\nresponse: token and user\n\n403: email or password is incorrect"
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"postman@gmx.at\",\n    \"password\": \"password9\",\n    \"firstname\": \"post\",\n    \"lastname\": \"man\",\n    \"mobile\": \"06761235567\",\n    \"street\": \"gasse 3\",\n    \"ZIP\": 2232,\n    \"town\": \"wien\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "register a new user\n\n200\n\nresponse: success\n\n401: register failed"
+					},
+					"response": []
+				},
+				{
+					"name": "orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicG9zdG1hbkBnbXguYXQiLCJpYXQiOjE2ODkyMjkyNTEsImV4cCI6MTY5MTkwNzY1MX0.oOyTLVjnmpSxJ3umFW6TmKil1m5Saj3Ik1F1ITtCFLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "order overview of a logged in user\n\n200\n\nresponse: all orders a user have placed\n\n500: error"
+					},
+					"response": [
+						{
+							"name": "orders 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2718"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a9e-Z0BwI/AZhgE7L31rl6EEVuLzbIk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jul 2023 11:03:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"orderDate\": \"2023-07-14T10:42:43.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": [\n            {\n                \"name\": \"Gitarre\",\n                \"price\": 500,\n                \"product_order\": {\n                    \"quantity\": 1,\n                    \"productId\": 16,\n                    \"orderId\": 146\n                }\n            }\n        ]\n    },\n    {\n        \"orderDate\": \"2023-07-14T10:34:44.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": [\n            {\n                \"name\": \"Ibanez Artcore AS53- TF Tobacco Flat\",\n                \"price\": 359,\n                \"product_order\": {\n                    \"quantity\": 1,\n                    \"productId\": 12,\n                    \"orderId\": 143\n                }\n            }\n        ]\n    },\n    {\n        \"orderDate\": \"2023-07-14T10:13:32.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": [\n            {\n                \"name\": \"Produkt3\",\n                \"price\": 79.95,\n                \"product_order\": {\n                    \"quantity\": 1,\n                    \"productId\": 3,\n                    \"orderId\": 135\n                }\n            }\n        ]\n    },\n    {\n        \"orderDate\": \"2023-07-14T08:15:43.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": [\n            {\n                \"name\": \"Produkt3\",\n                \"price\": 79.95,\n                \"product_order\": {\n                    \"quantity\": 1,\n                    \"productId\": 3,\n                    \"orderId\": 136\n                }\n            }\n        ]\n    },\n    {\n        \"orderDate\": \"2023-07-14T08:11:00.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": [\n            {\n                \"name\": \"Produkt3\",\n                \"price\": 79.95,\n                \"product_order\": {\n                    \"quantity\": 1,\n                    \"productId\": 3,\n                    \"orderId\": 134\n                }\n            }\n        ]\n    },\n    {\n        \"orderDate\": \"2023-07-14T08:09:42.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": []\n    },\n    {\n        \"orderDate\": \"2023-07-14T07:52:24.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": []\n    },\n    {\n        \"orderDate\": \"2023-07-14T07:50:11.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": []\n    },\n    {\n        \"orderDate\": \"2023-07-14T05:51:57.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": [\n            {\n                \"name\": \"Produkt3\",\n                \"price\": 79.95,\n                \"product_order\": {\n                    \"quantity\": 1,\n                    \"productId\": 3,\n                    \"orderId\": 126\n                }\n            }\n        ]\n    },\n    {\n        \"orderDate\": \"2023-07-14T05:50:40.000Z\",\n        \"status\": false,\n        \"user\": {\n            \"id\": 8,\n            \"email\": \"postman@gmx.at\",\n            \"firstname\": \"post\",\n            \"lastname\": \"man\",\n            \"mobile\": \"06761235567\",\n            \"street\": \"gasse 3\",\n            \"ZIP\": 2232,\n            \"town\": \"wien\"\n        },\n        \"products\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "last Order by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicG9zdG1hbkBnbXguYXQiLCJpYXQiOjE2ODkyMjkyNTEsImV4cCI6MTY5MTkwNzY1MX0.oOyTLVjnmpSxJ3umFW6TmKil1m5Saj3Ik1F1ITtCFLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/lastorder",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"lastorder"
+							]
+						},
+						"description": "geht auch noch nicht....zu testzwecken"
+					},
+					"response": []
+				}
+			],
+			"description": "Register,login, order, order overview for users"
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "Overview of all products with name and price\n\n200: response: products name and price\n\n500: internal Server Error"
+					},
+					"response": []
+				},
+				{
+					"name": "products/sort/:sortType",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/sort/price_asc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"sort",
+								"price_asc"
+							]
+						},
+						"description": "products sorted by name and or price\n\n200\n\nresponse: products sorted by name or price descending and ascending\n\n500: an unexpected error occured"
+					},
+					"response": [
+						{
+							"name": "products/sort/name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/products/sort/name",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products",
+										"sort",
+										"name"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "products/sort/price",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/sort/name",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"sort",
+										"name"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "products/sort/price_asc",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/sort/price_asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"sort",
+										"price_asc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "10032"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2730-GqkSDYMxjxg2segkrtg2XWhTjdY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Jul 2023 11:22:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 26,\n        \"stock\": 10,\n        \"name\": null,\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:11:40.000Z\",\n        \"updatedAt\": \"2023-07-14T15:11:40.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 27,\n        \"stock\": 10,\n        \"name\": null,\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:15:09.000Z\",\n        \"updatedAt\": \"2023-07-14T15:15:09.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 28,\n        \"stock\": 10,\n        \"name\": null,\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:15:19.000Z\",\n        \"updatedAt\": \"2023-07-14T15:15:19.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 32,\n        \"stock\": null,\n        \"name\": null,\n        \"price\": null,\n        \"description\": null,\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T09:41:10.000Z\",\n        \"updatedAt\": \"2023-07-17T09:41:10.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 19,\n        \"stock\": 10,\n        \"name\": \"Fame AG- 10 Am\",\n        \"price\": 79,\n        \"description\": \"Akustik Gitarren Verstärker\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 20,\n        \"stock\": 10,\n        \"name\": \"Fame AG-15A Acoustic- Amp\",\n        \"price\": 89.7,\n        \"description\": \"Akustik Gitarren Verstärker\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 13,\n        \"stock\": 10,\n        \"name\": \"Fame Bonita Cedro 1/2 Matt\",\n        \"price\": 220,\n        \"description\": \"1/2-Konzertgitarre für Kinder mit 530 mm Mensur, massiver Zederndecke, Mahagonikorpus, 45 mm Sattelbreite, Mahagonihals\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:37:18.000Z\",\n        \"updatedAt\": \"2023-07-13T12:37:18.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 17,\n        \"stock\": 15,\n        \"name\": \"Fame MA-15\",\n        \"price\": 49,\n        \"description\": \"Der kompakte Fame MA-15 Combo-Verstärker für E-Gitarre ist der perfekte Begleiter für den Unterricht und erste Bandproben\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 7,\n        \"stock\": 0,\n        \"name\": \"Fender Player Series Strat MN TPL\",\n        \"price\": 745,\n        \"description\": \"Erlenkorpus, Ahornhals, Ahorngriffbrett, mattes Halsfinish, Farbe:Tidepool, 22 Bünde\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-27T04:54:09.000Z\",\n        \"updatedAt\": \"2023-07-04T11:16:05.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 8,\n        \"stock\": 0,\n        \"name\": \"Fender Player Series Strat MN TPL\",\n        \"price\": 745,\n        \"description\": \"Erlenkorpus, Ahornhals, Ahorngriffbrett, mattes Halsfinish, Farbe:Tidepool, 22 Bünde\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-05T06:38:09.000Z\",\n        \"updatedAt\": \"2023-07-09T15:27:04.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 9,\n        \"stock\": 1,\n        \"name\": \"Fender Tele Tomatillo Relic\",\n        \"price\": 4499,\n        \"description\": \"Relic Nitro Finish ,  Medium Vintage Bünde ,  Einlagiges Black Phenolic Pickguard, Inklusive Deluxe Koffer, Gurt und Zertifikat, Farbe: Gelb\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-12T11:21:19.000Z\",\n        \"updatedAt\": \"2023-07-14T10:33:58.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 10,\n        \"stock\": 4,\n        \"name\": \"Fender Tele Tomatillo Relic\",\n        \"price\": 4499,\n        \"description\": \"Relic Nitro Finish ,  Medium Vintage Bünde ,  Einlagiges Black Phenolic Pickguard, Inklusive Deluxe Koffer, Gurt und Zertifikat, Farbe: Gelb\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-12T11:25:08.000Z\",\n        \"updatedAt\": \"2023-07-13T08:32:55.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 6,\n        \"stock\": 1,\n        \"name\": \"Fender Vintera 50s Strat MN SFG\",\n        \"price\": 977,\n        \"description\": \" Vintera Serie, Korpus: Erle, geschraubter Hals: Ahorn, Griffbrett: Ahorn, schwarze Dot Griffbretteinlagen \",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-26T16:27:21.000Z\",\n        \"updatedAt\": \"2023-07-04T10:31:51.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 16,\n        \"stock\": 8,\n        \"name\": \"Gitarre\",\n        \"price\": 500,\n        \"description\": \"Ich bin eine gitarre und habe hoffentlich eine categoryId\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-14T19:13:07.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 22,\n        \"stock\": 10,\n        \"name\": \"Godin ACS Nylon Natural \",\n        \"price\": 2199,\n        \"description\": \"Nylonsaitengitarre, massive Zederndecke, Ahornkorpus, Klangkammern, Synth-Access, Richlite-Griffbrett, inklusive Tasche\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 11,\n        \"stock\": 10,\n        \"name\": \"Ibanez Artcore AS53- TF Tobacco Flat\",\n        \"price\": 359,\n        \"description\": \"Semi Hollow Gitarre, Sapele-Korpus, Infinity R Humbucker, Ibanez Gibraltar Performer, Quik Change III, AS-Nyatoh-Hals\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:26:35.000Z\",\n        \"updatedAt\": \"2023-07-13T12:26:35.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 12,\n        \"stock\": 8,\n        \"name\": \"Ibanez Artcore AS53- TF Tobacco Flat\",\n        \"price\": 359,\n        \"description\": \"Semi Hollow Gitarre, Sapele-Korpus, Infinity R Humbucker, Ibanez Gibraltar Performer, Quik Change III, AS-Nyatoh-Hals\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:32:56.000Z\",\n        \"updatedAt\": \"2023-07-14T10:37:58.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 25,\n        \"stock\": 10,\n        \"name\": \"Ibanez Gio GRX- Walnut\",\n        \"price\": 229.5,\n        \"description\": \"mir ist zu heiß, farbe rot\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 24,\n        \"stock\": 10,\n        \"name\": \"Ibanez Gio GRX70DX-WNF\",\n        \"price\": 229.5,\n        \"description\": \"mir ist zu heiß, farbe rot\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 5,\n        \"stock\": 10,\n        \"name\": \"Ibanez Gio UPDATE\",\n        \"price\": 209,\n        \"description\": \" E-Gitarre, Pappelkorpus, Ahornhals, Jatoba-Griffbrett, Ibanez Infinity R Humbucker, Ibanez Infinity RS Single-Coils, T106 Tremolo \",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-26T12:02:35.000Z\",\n        \"updatedAt\": \"2023-07-17T11:14:22.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 21,\n        \"stock\": 10,\n        \"name\": \"ibanez Troubadour II \",\n        \"price\": 119.7,\n        \"description\": \"Akustik Gitarren Verstärker\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 18,\n        \"stock\": 15,\n        \"name\": \"Laney Mini Lion\",\n        \"price\": 59,\n        \"description\": \"E Gitarren Verstärker\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 3,\n        \"stock\": 5,\n        \"name\": \"Produkt3\",\n        \"price\": 79.95,\n        \"description\": \" SchoolFox nervt\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-21T16:08:58.000Z\",\n        \"updatedAt\": \"2023-07-14T08:15:43.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 4,\n        \"stock\": 0,\n        \"name\": \"Produkt3\",\n        \"price\": 79.95,\n        \"description\": \" SchoolFox nervt\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-21T16:09:00.000Z\",\n        \"updatedAt\": \"2023-07-10T17:09:16.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 14,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:38:46.000Z\",\n        \"updatedAt\": \"2023-07-13T12:38:46.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 15,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:46:55.000Z\",\n        \"updatedAt\": \"2023-07-15T20:48:09.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 29,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:21:14.000Z\",\n        \"updatedAt\": \"2023-07-14T15:21:14.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 30,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:23:11.000Z\",\n        \"updatedAt\": \"2023-07-14T15:23:11.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 31,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:23:25.000Z\",\n        \"updatedAt\": \"2023-07-14T15:23:25.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 33,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T09:47:45.000Z\",\n        \"updatedAt\": \"2023-07-17T09:47:45.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 34,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T09:48:34.000Z\",\n        \"updatedAt\": \"2023-07-17T09:48:34.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 35,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T10:11:58.000Z\",\n        \"updatedAt\": \"2023-07-17T10:11:58.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 36,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": \"https://images.musicstore.de/images/0320/ibanez-gio-grx120sp-mlm-metallic-light-blue-matte_1_GIT0058838-000.jpg\",\n        \"createdAt\": \"2023-07-17T10:12:52.000Z\",\n        \"updatedAt\": \"2023-07-17T10:12:52.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 37,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T11:08:36.000Z\",\n        \"updatedAt\": \"2023-07-17T11:08:36.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 23,\n        \"stock\": 10,\n        \"name\": \"Yamaha GC32C\",\n        \"price\": 2464.5,\n        \"description\": \"mir ist zu heiß\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    }\n]"
+						},
+						{
+							"name": "products/sort/name_asc",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/sort/price_asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"sort",
+										"price_asc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "10032"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2730-dp1/IGcj6LzKHe4woGYzE2nbJb4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Jul 2023 11:24:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 32,\n        \"stock\": null,\n        \"name\": null,\n        \"price\": null,\n        \"description\": null,\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T09:41:10.000Z\",\n        \"updatedAt\": \"2023-07-17T09:41:10.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 17,\n        \"stock\": 15,\n        \"name\": \"Fame MA-15\",\n        \"price\": 49,\n        \"description\": \"Der kompakte Fame MA-15 Combo-Verstärker für E-Gitarre ist der perfekte Begleiter für den Unterricht und erste Bandproben\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 18,\n        \"stock\": 15,\n        \"name\": \"Laney Mini Lion\",\n        \"price\": 59,\n        \"description\": \"E Gitarren Verstärker\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 19,\n        \"stock\": 10,\n        \"name\": \"Fame AG- 10 Am\",\n        \"price\": 79,\n        \"description\": \"Akustik Gitarren Verstärker\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 3,\n        \"stock\": 5,\n        \"name\": \"Produkt3\",\n        \"price\": 79.95,\n        \"description\": \" SchoolFox nervt\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-21T16:08:58.000Z\",\n        \"updatedAt\": \"2023-07-14T08:15:43.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 4,\n        \"stock\": 0,\n        \"name\": \"Produkt3\",\n        \"price\": 79.95,\n        \"description\": \" SchoolFox nervt\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-21T16:09:00.000Z\",\n        \"updatedAt\": \"2023-07-10T17:09:16.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 20,\n        \"stock\": 10,\n        \"name\": \"Fame AG-15A Acoustic- Amp\",\n        \"price\": 89.7,\n        \"description\": \"Akustik Gitarren Verstärker\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 21,\n        \"stock\": 10,\n        \"name\": \"ibanez Troubadour II \",\n        \"price\": 119.7,\n        \"description\": \"Akustik Gitarren Verstärker\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 14,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:38:46.000Z\",\n        \"updatedAt\": \"2023-07-13T12:38:46.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 15,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:46:55.000Z\",\n        \"updatedAt\": \"2023-07-15T20:48:09.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 26,\n        \"stock\": 10,\n        \"name\": null,\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:11:40.000Z\",\n        \"updatedAt\": \"2023-07-14T15:11:40.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 27,\n        \"stock\": 10,\n        \"name\": null,\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:15:09.000Z\",\n        \"updatedAt\": \"2023-07-14T15:15:09.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 28,\n        \"stock\": 10,\n        \"name\": null,\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:15:19.000Z\",\n        \"updatedAt\": \"2023-07-14T15:15:19.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 29,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:21:14.000Z\",\n        \"updatedAt\": \"2023-07-14T15:21:14.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 30,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:23:11.000Z\",\n        \"updatedAt\": \"2023-07-14T15:23:11.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 31,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-14T15:23:25.000Z\",\n        \"updatedAt\": \"2023-07-14T15:23:25.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 33,\n        \"stock\": 10,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T09:47:45.000Z\",\n        \"updatedAt\": \"2023-07-17T09:47:45.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 34,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T09:48:34.000Z\",\n        \"updatedAt\": \"2023-07-17T09:48:34.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 35,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T10:11:58.000Z\",\n        \"updatedAt\": \"2023-07-17T10:11:58.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 36,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": \"https://images.musicstore.de/images/0320/ibanez-gio-grx120sp-mlm-metallic-light-blue-matte_1_GIT0058838-000.jpg\",\n        \"createdAt\": \"2023-07-17T10:12:52.000Z\",\n        \"updatedAt\": \"2023-07-17T10:12:52.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 37,\n        \"stock\": 4,\n        \"name\": \"Yamaha CGS 104A NT 4/4 Natural\",\n        \"price\": 159,\n        \"description\": \"Gerade jugendliche Einsteiger, aber auch erfahrenere Spieler werden die kraftvolle Performance der CGS104 zu schätzen wissen\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-17T11:08:36.000Z\",\n        \"updatedAt\": \"2023-07-17T11:08:36.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 5,\n        \"stock\": 10,\n        \"name\": \"Ibanez Gio UPDATE\",\n        \"price\": 209,\n        \"description\": \" E-Gitarre, Pappelkorpus, Ahornhals, Jatoba-Griffbrett, Ibanez Infinity R Humbucker, Ibanez Infinity RS Single-Coils, T106 Tremolo \",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-26T12:02:35.000Z\",\n        \"updatedAt\": \"2023-07-17T11:14:22.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 13,\n        \"stock\": 10,\n        \"name\": \"Fame Bonita Cedro 1/2 Matt\",\n        \"price\": 220,\n        \"description\": \"1/2-Konzertgitarre für Kinder mit 530 mm Mensur, massiver Zederndecke, Mahagonikorpus, 45 mm Sattelbreite, Mahagonihals\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:37:18.000Z\",\n        \"updatedAt\": \"2023-07-13T12:37:18.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 24,\n        \"stock\": 10,\n        \"name\": \"Ibanez Gio GRX70DX-WNF\",\n        \"price\": 229.5,\n        \"description\": \"mir ist zu heiß, farbe rot\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 25,\n        \"stock\": 10,\n        \"name\": \"Ibanez Gio GRX- Walnut\",\n        \"price\": 229.5,\n        \"description\": \"mir ist zu heiß, farbe rot\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 11,\n        \"stock\": 10,\n        \"name\": \"Ibanez Artcore AS53- TF Tobacco Flat\",\n        \"price\": 359,\n        \"description\": \"Semi Hollow Gitarre, Sapele-Korpus, Infinity R Humbucker, Ibanez Gibraltar Performer, Quik Change III, AS-Nyatoh-Hals\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:26:35.000Z\",\n        \"updatedAt\": \"2023-07-13T12:26:35.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 12,\n        \"stock\": 8,\n        \"name\": \"Ibanez Artcore AS53- TF Tobacco Flat\",\n        \"price\": 359,\n        \"description\": \"Semi Hollow Gitarre, Sapele-Korpus, Infinity R Humbucker, Ibanez Gibraltar Performer, Quik Change III, AS-Nyatoh-Hals\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T12:32:56.000Z\",\n        \"updatedAt\": \"2023-07-14T10:37:58.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 16,\n        \"stock\": 8,\n        \"name\": \"Gitarre\",\n        \"price\": 500,\n        \"description\": \"Ich bin eine gitarre und habe hoffentlich eine categoryId\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-14T19:13:07.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 7,\n        \"stock\": 0,\n        \"name\": \"Fender Player Series Strat MN TPL\",\n        \"price\": 745,\n        \"description\": \"Erlenkorpus, Ahornhals, Ahorngriffbrett, mattes Halsfinish, Farbe:Tidepool, 22 Bünde\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-27T04:54:09.000Z\",\n        \"updatedAt\": \"2023-07-04T11:16:05.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 8,\n        \"stock\": 0,\n        \"name\": \"Fender Player Series Strat MN TPL\",\n        \"price\": 745,\n        \"description\": \"Erlenkorpus, Ahornhals, Ahorngriffbrett, mattes Halsfinish, Farbe:Tidepool, 22 Bünde\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-05T06:38:09.000Z\",\n        \"updatedAt\": \"2023-07-09T15:27:04.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 6,\n        \"stock\": 1,\n        \"name\": \"Fender Vintera 50s Strat MN SFG\",\n        \"price\": 977,\n        \"description\": \" Vintera Serie, Korpus: Erle, geschraubter Hals: Ahorn, Griffbrett: Ahorn, schwarze Dot Griffbretteinlagen \",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-06-26T16:27:21.000Z\",\n        \"updatedAt\": \"2023-07-04T10:31:51.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 22,\n        \"stock\": 10,\n        \"name\": \"Godin ACS Nylon Natural \",\n        \"price\": 2199,\n        \"description\": \"Nylonsaitengitarre, massive Zederndecke, Ahornkorpus, Klangkammern, Synth-Access, Richlite-Griffbrett, inklusive Tasche\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 23,\n        \"stock\": 10,\n        \"name\": \"Yamaha GC32C\",\n        \"price\": 2464.5,\n        \"description\": \"mir ist zu heiß\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-13T13:38:00.000Z\",\n        \"updatedAt\": \"2023-07-13T13:38:00.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 9,\n        \"stock\": 1,\n        \"name\": \"Fender Tele Tomatillo Relic\",\n        \"price\": 4499,\n        \"description\": \"Relic Nitro Finish ,  Medium Vintage Bünde ,  Einlagiges Black Phenolic Pickguard, Inklusive Deluxe Koffer, Gurt und Zertifikat, Farbe: Gelb\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-12T11:21:19.000Z\",\n        \"updatedAt\": \"2023-07-14T10:33:58.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 10,\n        \"stock\": 4,\n        \"name\": \"Fender Tele Tomatillo Relic\",\n        \"price\": 4499,\n        \"description\": \"Relic Nitro Finish ,  Medium Vintage Bünde ,  Einlagiges Black Phenolic Pickguard, Inklusive Deluxe Koffer, Gurt und Zertifikat, Farbe: Gelb\",\n        \"imageURL\": null,\n        \"createdAt\": \"2023-07-12T11:25:08.000Z\",\n        \"updatedAt\": \"2023-07-13T08:32:55.000Z\",\n        \"deletedAt\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "products/search/:searchString",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/search/ibanez",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"search",
+								"ibanez"
+							]
+						},
+						"description": "search products by string\n\n200\n\nresponse: name, price and description of products\n\n500: an unexpected error occurred"
+					},
+					"response": []
+				},
+				{
+					"name": "products/:id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"15"
+							]
+						},
+						"description": "view product details by product id,\n\n200\n\nresponse: product\n\n404: Product not found"
+					},
+					"response": []
+				}
+			],
+			"description": "view all products, sort and order products and get the product details, for user and guest"
+		},
+		{
+			"name": "guest",
+			"item": [
+				{
+					"name": "orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"logitech@yahoo.com\",\n    \"firstname\": \"mouse\",\n    \"lastname\": \"mousemouse\",\n    \"mobile\": \"06991234567\",\n    \"street\": \"RoteRosenStraße 4\",\n    \"ZIP\":\"6000\",\n    \"town\": \"Bachruntergehen 5\",\n\n    \"product\": [{\n    \"id\": 15,\n    \"quantity\": 2\n}]\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "place order without authentication, give email,firstname,lastname instead\n\n200: order successful\n\n400: out of stock\n\n500: all fields must be completed"
+					},
+					"response": []
+				}
+			],
+			"description": "guest order"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		}
+	]
+}

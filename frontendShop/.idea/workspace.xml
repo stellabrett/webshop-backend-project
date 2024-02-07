@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8102c3e3-d449-4fe0-b947-b9ee8975abf3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/.idea/backendProject.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/brettschneider_web" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/erModellShop.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/models/admins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/models/orders.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/models/product.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/models/product_order.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/models/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/router/admins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/router/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/router/orders.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/router/products.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/router/register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/router/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/services/database.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/services/jwt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/services/sequelize.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/strategies/jwtStrategy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../BackendProject/backendProject/strategies/localStrategy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../router/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/../router/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../services/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/../services/database.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2T7gVBBUnbWdiNQI7KX15q4m3Ea" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "backend__save",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8102c3e3-d449-4fe0-b947-b9ee8975abf3" name="Changes" comment="" />
+      <created>1690399554028</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1690399554028</updated>
+      <workItem from="1690399554981" duration="1323000" />
+      <workItem from="1692446252510" duration="46000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
